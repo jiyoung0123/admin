@@ -25,28 +25,24 @@ public class CustController {
     @Autowired
     CustService custService;
     String dir = "cust/";
-    @RequestMapping("/add")
-    public String add(Model model){
-        model.addAttribute("center", dir+"add");
+
+
+    @RequestMapping("/all")
+    public String all(Model model) throws Exception {
+        List<Cust> list = null;
+        list = custService.get();
+        model.addAttribute("clist", list);
+        model.addAttribute("center", dir+"all");
         return "index";
     }
 
-    @RequestMapping("/addimpl")
-    //@Validated를 넣으면 Cust DTO 만들 때 넣었던 제약사항들을 체크하겠다는 뜻
-    public String addimpl(Model model, @Validated Cust cust, Errors errors) throws Exception {
-        if(errors.hasErrors()){
-            List<ObjectError> es = errors.getAllErrors();
-            String msg = "";
-            for(ObjectError e :es){
-                msg += "<h4>";
-                msg += e.getDefaultMessage();
-                msg += "</h4>";
-            }
-            throw new Exception(msg);
-        }
-        cust.setPwd(encoder.encode(cust.getPwd()));
-        custService.register(cust);
-        return "redirect:/cust/all";
+    @RequestMapping("/detail")
+    public String detail(Model model, String id) throws Exception {
+        Cust cust = null;
+        cust = custService.get(id);
+        model.addAttribute("custinfo",cust);
+        model.addAttribute("center",dir+"detail");
+        return "index";
     }
 
 
@@ -75,26 +71,38 @@ public class CustController {
     }
 
 
-
-
-
-
-    @RequestMapping("/detail")
-    public String detail(Model model, String id) throws Exception {
-        Cust cust = null;
-        cust = custService.get(id);
-        model.addAttribute("custinfo",cust);
-        model.addAttribute("center",dir+"detail");
+    @RequestMapping("/add")
+    public String add(Model model){
+        model.addAttribute("center", dir+"add");
         return "index";
     }
 
-    @RequestMapping("/all")
-    public String all(Model model) throws Exception {
-        List<Cust> list = null;
-        list = custService.get();
-        model.addAttribute("clist", list);
-        model.addAttribute("center", dir+"all");
-        return "index";
+    @RequestMapping("/addimpl")
+    //@Validated를 넣으면 Cust DTO 만들 때 넣었던 제약사항들을 체크하겠다는 뜻
+    public String addimpl(Model model, @Validated Cust cust, Errors errors) throws Exception {
+        if(errors.hasErrors()){
+            List<ObjectError> es = errors.getAllErrors();
+            String msg = "";
+            for(ObjectError e :es){
+                msg += "<h4>";
+                msg += e.getDefaultMessage();
+                msg += "</h4>";
+            }
+            throw new Exception(msg);
+        }
+        cust.setPwd(encoder.encode(cust.getPwd()));
+        custService.register(cust);
+        return "redirect:/cust/all";
     }
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -40,9 +40,7 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="id 입력" id="id" name="id">
                         </div>
-                        <div class="col-sm-10">
-                            <span id="check_id" class="bg-danger"></span>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="pwd">Password:</label>
@@ -58,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button id="register_btn" type="button" class="btn btn-default">Register</button>
+                            <button id="register_btn" type="button" class="btn btn-info">Register</button>
                         </div>
                     </div>
                 </form>

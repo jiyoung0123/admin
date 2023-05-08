@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +42,11 @@
   <script src="js/charts.js"></script>
   <%--jquery--%>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <%--    지도사용하려고 넣은 script--%>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7350bf505e60296a1b84652c7163782"></script>
+
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -109,6 +115,23 @@
       </div>
     </li>
 
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#maker_mgt"
+         aria-expanded="true" aria-controls="maker_mgt">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Marker</span>
+      </a>
+      <div id="maker_mgt" class="collapse" aria-labelledby="headingUtilities"
+           data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Marker Managements:</h6>
+          <a class="collapse-item" href="/marker/add">ADD</a>
+          <a class="collapse-item" href="/marker/all">ALL</a>
+        </div>
+      </div>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -158,6 +181,13 @@
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Live Chart</span></a>
     </li>
+    <c:if test="${loginadm !=null}">
+      <li class="nav-item">
+        <a class="nav-link" href="/websocket">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>websocket</span></a>
+      </li>
+    </c:if>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

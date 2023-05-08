@@ -109,6 +109,21 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/websocket")
+    public String websocket(Model model){
+        model.addAttribute("center","websocket");
+        return "index";
+    }
+
+    @RequestMapping("/logouts")
+    public String logout(Model model, HttpSession session){
+        if(session != null){
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
+
+
 //    @RequestMapping("/tables")
 //    public String tables(Model model){
 //        List <Item> list = new ArrayList<>();

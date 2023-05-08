@@ -31,12 +31,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Cust Add</h1>
+    <h1 class="h3 mb-2 text-gray-800">Cust Detail</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Cust Add</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Cust Detail</h6>
         </div>
         <div class="card-body">
             <div id="container">
