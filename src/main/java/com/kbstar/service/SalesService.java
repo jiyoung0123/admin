@@ -49,4 +49,13 @@ public class SalesService implements KBService<Character, Sales> {
         List<Sales> list=mapper.selectall();
         return list;
     }
+
+
+
+    public List getdatasales() throws Exception {
+        List<Sales> list=mapper.getdatasales();
+        return list;
+    }
+
+
 }

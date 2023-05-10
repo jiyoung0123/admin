@@ -52,7 +52,7 @@
             var sid = this.id;
             // admin과 cust 둘 다 8088/ws로 접속되는것
             // 웹소켓의 접속정보('http://127.0.0.1:8088/ws')
-            var socket = new SockJS('http://127.0.0.1:8088/ws');
+            var socket = new SockJS('${adminserver}/ws');
 
             // 커넥트시도
             this.stompClient = Stomp.over(socket);
@@ -68,7 +68,10 @@
                         JSON.parse(msg.body).content1
                         + "</h4>");
                 });
+
+                // //prepend는 앞 쪽으로 계속 append 되는것
                 this.subscribe('/send/'+sid, function(msg) {
+
                     $("#me").prepend(
                         "<h4>" + JSON.parse(msg.body).sendid +":"+
                         JSON.parse(msg.body).content1+ "</h4>");

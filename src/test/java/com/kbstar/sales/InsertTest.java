@@ -16,7 +16,7 @@ class InsertTest {
 
     @Test
     void contextLoads(){
-        Sales obj =new Sales("2023-04-27",20000,'M');
+        Sales obj =new Sales("2023-04-27",20000,"M");
         try{
             service.register(obj);
             service.get();

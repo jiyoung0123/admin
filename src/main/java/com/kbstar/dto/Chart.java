@@ -1,4 +1,6 @@
 package com.kbstar.dto;
+
+
 import lombok.*;
 
 @AllArgsConstructor
@@ -6,8 +8,8 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class Sales {
-    private String rdate;
-    private int price;
-    private String gender;
+public class Chart {
+    int month;
+    String gender;
+    int total;
 }

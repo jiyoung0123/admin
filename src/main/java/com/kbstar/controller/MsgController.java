@@ -14,7 +14,7 @@ public class MsgController {
 
     @MessageMapping("/receiveall") // 모두에게 전송
     public void receiveall(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
-//        send라는 outbound로 msg를 보냄
+//        send(target)라는 outbound로 msg를 보냄
         template.convertAndSend("/send",msg);
     }
     @MessageMapping("/receiveme") // 나에게만 전송 ex)Chatbot
