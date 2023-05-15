@@ -64,9 +64,6 @@ public class MainController {
         return "index";
     }
 
-
-
-
     @RequestMapping("/register")
     public String register(Model model){
         model.addAttribute("center","register");
@@ -126,6 +123,13 @@ public class MainController {
             session.invalidate();
         }
         return "redirect:/";
+    }
+
+    @RequestMapping("/callcenter")
+    public String callcenter(Model model){
+        model.addAttribute("adminserver",adminserver);
+        model.addAttribute("center","callcenter");
+        return "index";
     }
 
 
